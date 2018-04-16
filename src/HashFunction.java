@@ -4,21 +4,21 @@ import java.util.Arrays;
 public class HashFunction {
 
 	public String[] Table;
+	
 	public int arraySize; 
+	
 	public int itemsInArray = 0;
 
 	public HashFunction(int size) {
 		// TODO Auto-generated constructor stub
-		
-		
 		arraySize = size;
+		
 		Table = new String[size];
+		
 		Arrays.fill((String[]) Table, "-1");
-		
-		
+			
 	}
 
-	
 	public void FrameHash3(String stringsForArray, String[] Table) {
 			
 			String newElementVal = stringsForArray;
@@ -39,40 +39,31 @@ public class HashFunction {
 			
 			newElementVal = newElementVal + "," + time;
 			
-
-			
 			Table[arrayIndex] = newElementVal;
 		}
 		
-	
 	public void DisplayHash2() {
 
-		
 		LocalTime time = LocalTime.now();
-		
 		
         int last = 0, index = 0;
         
         String item = "";
         
-        
-        
         for(int m = 0; m < 1000; m++){
+        	
         	if(Table[m] != "-1"){
         	
         	System.out.print("\nIndex " + m);
+        	
         	System.out.print(" | Value:  " + Table[m]);
         
         	}
+        	
         	index += 1;
         	
-        	
         }
         
-        
-        
-
-        }
-
-
+     }
+	
 }

@@ -9,14 +9,15 @@ public class JavaServerThreadTester implements Runnable {
 	Random r = new Random();
 	
 	public JavaServerThreadTester (String x) {
+		
 		name = x;
+		
 		time = r.nextInt(9999);
 	}
 	
 	public void Frame(String[] stringsForArray, String[] theArray){
 		
 		for(int n = 0; n < stringsForArray.length; n++){
-			
 			
 		}
 		

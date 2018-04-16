@@ -9,16 +9,21 @@ public class JavaServerRunableStorageStarter implements Runnable {
 	ServerSocket serverSocket2;
 	
 	protected String msg;
+	
 	protected DatagramPacket packet;
+	
 	protected byte[] buffer;
+	
 	int N = 2;
+	
 	boolean running = false;
+	
 	int portNumber;
 	
 	protected DatagramSocket dsocket;
 	
-	
 	HashFunction theFunction;
+	
 	String name, itemsInArray, x;
 	
 	public String[] Table;
@@ -28,22 +33,28 @@ public class JavaServerRunableStorageStarter implements Runnable {
 	public JavaServerRunableStorageStarter(ServerSocket serverSocket2, int portNumber, DatagramSocket dsocket, byte[] buffer, DatagramPacket packet, String msg, String[] Table, int arraySize, String itemsInArray, HashFunction theFunction) {
 		
 		this.portNumber = portNumber;
-		this.msg = msg;
-		this.packet = packet;
-		this.buffer = buffer;
-		this.theFunction = theFunction;
-		this.Table = Table;
-		this.itemsInArray = itemsInArray;
-		this.arraySize = arraySize;
-		this.dsocket = dsocket;
 		
+		this.msg = msg;
+		
+		this.packet = packet;
+		
+		this.buffer = buffer;
+		
+		this.theFunction = theFunction;
+		
+		this.Table = Table;
+		
+		this.itemsInArray = itemsInArray;
+		
+		this.arraySize = arraySize;
+		
+		this.dsocket = dsocket;
 		
 	}
 
 	@Override
 	public void run() {
 
-		
 		while(N>0){
 			
 			try {
@@ -60,6 +71,7 @@ public class JavaServerRunableStorageStarter implements Runnable {
 			
 			System.out.println(e.getMessage());
 		}
+			
 		}
 	}
 

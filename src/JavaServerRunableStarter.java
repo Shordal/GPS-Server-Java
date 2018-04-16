@@ -6,16 +6,21 @@ import java.util.Arrays;
 public class JavaServerRunableStarter implements Runnable {
 	
 	int portNumber;
+	
 	ServerSocket serverSocket2;
+	
 	public String[] Table;
+	
 	private HashFunction theFunction;
-
 	
 	public JavaServerRunableStarter(int portNumber, ServerSocket serverSocket2, String[] Table, HashFunction theFunction) {
 		// TODO Auto-generated constructor stub
 		this.portNumber = portNumber;
+		
 		this.serverSocket2 = serverSocket2;
+		
 		this.Table = Table;
+		
 		this.theFunction = theFunction;
 		
 	}
@@ -29,11 +34,13 @@ public class JavaServerRunableStarter implements Runnable {
 		
 		while(T>0){
 			
-			Socket clientSocket = serverSocket2.accept();	
+			Socket clientSocket = serverSocket2.accept();
+			
 			new Thread(new JavaServerRunable(clientSocket,Table,theFunction)).start();
 		}
 		
 	}catch(IOException e){
+		
 		e.printStackTrace();
 	}
 

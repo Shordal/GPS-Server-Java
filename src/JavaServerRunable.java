@@ -11,42 +11,46 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.Arrays;
 
-
 public class JavaServerRunable implements Runnable{
 	
 	private Socket clientSocket = null;
+	
 	private String Find = null;
+	
 	public String[] Table;
+	
 	public int arraySize,size; 
-
 	
 	DataInputStream is;
-	DataOutputStream os;
-	private HashFunction theFunction;
 	
-
+	DataOutputStream os;
+	
+	private HashFunction theFunction;
 	
 	public JavaServerRunable(Socket clientSocket, String[] Table, HashFunction theFunction) {
 		
 		this.clientSocket = clientSocket;
+		
 		this.Table = Table;
+		
 		this.theFunction = theFunction;
 		
 		size = 200;
-		
-
+	
 	}
 
-	
 	public void run() {
 		
 		try{
 			
 			System.out.print("Code:36");
+			
 			System.out.println("HERE!!!: " + theFunction.Table[189]);
 			
 			Boolean KeepGoing1 = true;
+			
 			Boolean KeepGoing2 = true;
+			
 			while(KeepGoing1){
 
 			BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
@@ -54,31 +58,41 @@ public class JavaServerRunable implements Runnable{
 			PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
 			
 			int N = 2;
-			
-
 		
 			Find = in.readLine();
+			
 			System.out.println("From Client: " + Find);
+			
 			KeepGoing2 = true;
 			
 			if (Find == null){
+				
 				KeepGoing1 = false;
 				
 				System.out.println("Server: Hello, closing socket");
+				
 				out.flush();
 
 			}
+			
 			else if (Find.contains("<AVL><vehicles>active</vehicles></AVL>")){
+				
 				System.out.println("Command found, returning Active Positions Only vehicles");
+				
 				String header ="{\"status\":\"active\",\"vehicles\":[{";
+				
 				String end = "}]}\n";
+				
 				String body = "";
+				
 				String link = "},{";
+				
 				int index = 0;
 					
 					for(int m = 0; m < 1000; m++){
 						
 						System.out.println("ERROR OVER HERE: " + theFunction.Table[m]);
+						
 						if(theFunction.Table[m] != "-1"){
 							
 							String stringFromArray = theFunction.Table[m];
@@ -87,11 +101,7 @@ public class JavaServerRunable implements Runnable{
 						
 						String status = "";
 						
-
-						
 						String latitude = ""; String longitude = ""; String speed = ""; String heading = ""; String time = ""; 
-						
-
 						
 						ident = stringFromArray.split(",")[12];
 						
@@ -145,8 +155,8 @@ public class JavaServerRunable implements Runnable{
 						
 						System.out.println(time);
 						
+						//====================end of substring================
 						
-					
 						String bodyAdd = "\"ident\":\""+ident+"\",\"status\":\""+status+"\",\"latitude\":\""+latitude+"\",\"longitude\":\""+longitude+"\",\"speed\":\""+speed+"\",\"heading\":\""+heading+"\",\"time\":\""
 								+time+"\"";
 						
@@ -157,10 +167,9 @@ public class JavaServerRunable implements Runnable{
 						m++;
 						
 						}
-						
-						
 					
 					}
+					
 				body = body.substring(0, body.length() -3);
 					
 				String output = header + body + end;
@@ -168,18 +177,17 @@ public class JavaServerRunable implements Runnable{
 				System.out.print("going to client: " + output);
 				
 				out.print(output);
-				
-
-				
+		
 				out.flush();
 
 				N = 0;
 
-
 			Thread.sleep(10);
 			
 			}
+			
 			else if (Find.contains("<AVL><vehicles>all</vehicles></AVL>")){
+				
 				System.out.println("Command found, returning all vehicles");
 				
 				String string ="{\"status\":\"active\",\"vehicles\":[{\"ident\":\"V102\",\"status\":\"A\",\"latitude\":\"-49.2273\",\"longitude\":\"-23.47\",\"speed\":\"70\",\"heading\":\"45\",\"time\":\"13:35:19\"}]}\n";
@@ -195,16 +203,20 @@ public class JavaServerRunable implements Runnable{
 			}
 			
 			else {
+				
 				System.out.println("Command Not found, Exiting");
 			
-
 			KeepGoing1 = true;
+			
 			}
 			
 		}
 			System.out.println("Out of here!");
+			
 		} catch (IOException e) {
+			
 			e.printStackTrace();
+			
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -212,6 +224,5 @@ public class JavaServerRunable implements Runnable{
 		System.out.println("Code:37");
 		
 	}
-	
 
 }
