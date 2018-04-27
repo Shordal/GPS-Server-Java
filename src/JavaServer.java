@@ -1,6 +1,7 @@
 public class JavaServer {
 
 		public static void main(String[] args) {
+			
 			System.out.println("Server: Hello there!\nServer: I'm gonna run some tests real quick!\n");
 
 			final String[] Table = null; 

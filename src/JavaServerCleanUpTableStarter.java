@@ -1,4 +1,3 @@
-import java.io.IOException;
 public class JavaServerCleanUpTableStarter implements Runnable {
 	
 	HashFunction theFunction;

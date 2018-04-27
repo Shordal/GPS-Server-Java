@@ -5,11 +5,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
-import java.time.LocalTime;
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.util.Arrays;
 
 public class JavaServerRunable implements Runnable{
 	
@@ -49,21 +44,15 @@ public class JavaServerRunable implements Runnable{
 			
 			Boolean KeepGoing1 = true;
 			
-			Boolean KeepGoing2 = true;
-			
 			while(KeepGoing1){
 
 			BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
 			
 			PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
-			
-			int N = 2;
 		
 			Find = in.readLine();
 			
 			System.out.println("From Client: " + Find);
-			
-			KeepGoing2 = true;
 			
 			if (Find == null){
 				
@@ -86,8 +75,6 @@ public class JavaServerRunable implements Runnable{
 				String body = "";
 				
 				String link = "},{";
-				
-				int index = 0;
 					
 					for(int m = 0; m < 1000; m++){
 						
@@ -179,8 +166,6 @@ public class JavaServerRunable implements Runnable{
 				out.print(output);
 		
 				out.flush();
-
-				N = 0;
 
 			Thread.sleep(10);
 			

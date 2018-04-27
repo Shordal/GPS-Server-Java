@@ -44,23 +44,15 @@ public class HashFunction {
 		
 	public void DisplayHash2() {
 
-		LocalTime time = LocalTime.now();
-		
-        int last = 0, index = 0;
-        
-        String item = "";
-        
         for(int m = 0; m < 1000; m++){
         	
         	if(Table[m] != "-1"){
         	
-        	System.out.print("\nIndex " + m);
+        	System.out.print("\nIndex/ID: " + m);
         	
         	System.out.print(" | Value:  " + Table[m]);
         
         	}
-        	
-        	index += 1;
         	
         }
         

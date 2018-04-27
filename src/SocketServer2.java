@@ -2,7 +2,6 @@ import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.ServerSocket;
-import java.net.Socket;
 
 public class SocketServer2 {
 	
@@ -48,7 +47,7 @@ public class SocketServer2 {
 			DatagramPacket packet = new DatagramPacket(buffer, buffer.length);
 			//=======================
 			
-			int n = 1;
+			//int n = 1;
 			
 				new Thread( new JavaServerRunableStarter(portNumber, serverSocket2, Table,theFunction)).start();
 				

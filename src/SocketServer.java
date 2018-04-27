@@ -1,7 +1,6 @@
 import java.io.IOException;
 import java.net.ServerSocket;
-import java.net.Socket;
-
+//mostly dead code
 public class SocketServer {
 	
 	int portNumber = 9099;
@@ -21,7 +20,7 @@ public class SocketServer {
 			
 		}
 		
-		while (true){
+		while (true){/*
 			
 			try{
 				
@@ -39,7 +38,7 @@ public class SocketServer {
 			
 			}
 			
-		}
+		*/}
 
 	}
 	
